@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+       context: .
+       args:
+         - DEV=true
+    ports:
+       - "8000:8000"
+    volumes:
+       - ./app:/app
+    command: >
+             sh -c "python manage.py runserver 0.0.0.0:8000"
+
+  #version: → indique la version du format docker-compose.
+  #
+  #services: → contient la liste des conteneurs à lancer (ex: app, db, nginx, etc.).
+  #
+  #app: → ton application principale (par ex. Django).
+  #
+  #build: → indique à Docker de construire l’image à partir du Dockerfile.
+  #
+  #ports: → relie le port du conteneur à ton ordinateur (ex: 8000:8000).
+  #
+  #volumes: → permet de partager des fichiers entre ton PC et le conteneur.
+  #
+  #environment: → définit des variables d’environnement (ex: paramètres Django).
+  #
+  #depends_on: → indique que ce conteneur doit attendre qu’un autre démarre (ex: la base de données).
+  #
+  #db: → un service de base de données (ex: PostgreSQL, MySQL, etc.).
+  #
+  #image: → image Docker à utiliser (ex: postgres:13-alpine).
+  #
+  #environment: → configure le mot de passe, le nom de la base, etc.
+  #
+  #volumes: → garde les données même si le conteneur est supprimé.
